@@ -1,4 +1,3 @@
-class BogoSort {
 
   def isSorted(l:List[Int]): Boolean = l match {
     case Nil => true
@@ -6,12 +5,14 @@ class BogoSort {
     case x :: xs => x <= xs.head && isSorted(xs)
   }
   
-  def bogoSortMethod(listForShuffle: List[Int]):List[Int] = {
+  def bogoSortMethod(listForShuffle: List[Int]): List[Int] = {
 
     val shuffledList = util.Random.shuffle(listForShuffle)
 
-    if(isSorted(shuffledList)) shuffledList
+    if(isSorted(shuffledList))
+      shuffledList
     else
       bogoSortMethod(shuffledList)
   }
-}
+
+
