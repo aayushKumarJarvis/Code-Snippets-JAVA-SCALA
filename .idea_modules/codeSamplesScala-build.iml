@@ -14,7 +14,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library name="sbt-and-plugins">
         <CLASSES>
           <root url="jar://$USER_HOME$/.sbt/boot/scala-2.10.3/org.scala-sbt/sbt/0.13.2/persist-0.13.2.jar!/" />
@@ -67,7 +67,8 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="SBT: scala:2.10.3" level="project" />
+    <orderEntry type="library" exported="" name="SBT: scala:2.10.3" level="project" />
+    <orderEntry type="library" exported="" name="SBT: mysql:mysql-connector-java:5.1.30" level="project" />
   </component>
 </module>
 

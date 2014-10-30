@@ -15,6 +15,7 @@ class FoldLeftExamples {
   def calculateAverage(list: List[Int]): Double =
     list.foldLeft(0.0)(_+_) / list.foldLeft(0)((sum,_) => sum + 1)
 
-  
+  // code snippet to write insertion sort algorithm
+
   
 }
