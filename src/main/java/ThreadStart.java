@@ -6,9 +6,9 @@ public class ThreadStart {
         Thread t = Thread.currentThread();
         System.out.println("current thread is "+t);
 
-        // change the name of thread
+        // change the nameOfCustomer of thread
         t.setName("My Thread");
-        System.out.println("After name change "+t);
+        System.out.println("After nameOfCustomer change "+t);
 
         try {
             for(int i=5;i>0;i--) {

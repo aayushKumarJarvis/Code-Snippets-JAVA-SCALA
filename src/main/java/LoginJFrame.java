@@ -10,10 +10,12 @@ public class LoginJFrame extends JFrame {
     JTextField textUserName;
     JPasswordField textPassword;
 
-    JButton button;
+    JButton buttonForLogin;
+    JButton buttonForRegister;
     Container container;
 
-    handler handle;
+    handlerForLogin handleLogin;
+    handlerForRegister handleRegister;
     Database db;
 
     LoginJFrame() {
@@ -23,21 +25,25 @@ public class LoginJFrame extends JFrame {
         container.setLayout(new FlowLayout());
 
         db = new Database();
-        handle = new handler();
+        handleLogin = new handlerForLogin();
+        handleRegister = new handlerForRegister();
 
         userName = new JLabel("Username");
         password = new JLabel("Password");
         textUserName = new JTextField(10);
         textPassword = new JPasswordField(10);
-        button = new JButton("Login");
+        buttonForLogin = new JButton("Login");
+        buttonForRegister = new JButton("Register");
 
-        button.addActionListener(handle);
+        buttonForLogin.addActionListener(handleLogin);
+        buttonForRegister.addActionListener(handleRegister);
 
         container.add(userName);
         container.add(password);
         container.add(textUserName);
         container.add(textPassword);
-        container.add(button);
+        container.add(buttonForLogin);
+        container.add(buttonForRegister);
 
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,11 +51,11 @@ public class LoginJFrame extends JFrame {
 
     }
 
-    public class handler implements ActionListener {
+    public class handlerForLogin implements ActionListener {
 
         public void actionPerformed(ActionEvent ae) {
 
-            if(ae.getSource() == button) {
+            if(ae.getSource() == buttonForLogin) {
 
                 char[] temp_pwd = textPassword.getPassword();
                 String pwd = null;
@@ -64,10 +70,36 @@ public class LoginJFrame extends JFrame {
 
                 else {
 
-                    JOptionPane.showMessageDialog(null, "Login failed!","Failed!!",
+                    JOptionPane.showMessageDialog(null, "Username/Password not entered or Incorrect!","Failed!!",
                     JOptionPane.ERROR_MESSAGE);
                 }
 
+            }
+        }
+    }
+
+    public class handlerForRegister implements ActionListener {
+
+        public void actionPerformed(ActionEvent ae) {
+
+            if (ae.getSource() == buttonForRegister) {
+
+                char[] temp_pwd = textPassword.getPassword();
+                String pwd = null;
+                pwd = String.copyValueOf(temp_pwd);
+                System.out.println("Username,Pwd:" + textUserName.getText() + "," + pwd);
+
+                if(db.registerData(textUserName.getText(), pwd)) {
+
+                    JOptionPane.showMessageDialog(null, "You have been successfully registered","Success",
+                    JOptionPane.INFORMATION_MESSAGE);
+                }
+
+                else {
+
+                    JOptionPane.showMessageDialog(null, "Registration Unsuccessfull","Failed",
+                    JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
     }

@@ -16,5 +16,5 @@
       bogoSortMethod(shuffledList)
   }
 
-
+  def bogosort[A <% Ordered[A]](list: List[A]): List[A] = {}
 */
